@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SimulaturAndroid</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="buttonLunchString">Start Jade</string>
+    <string name="seConnecter">Se connecter</string>
+    <string name="textUserName"></string>
+    <string name="labelUserName"></string>
+    <string name="labelUser">Numero d\'etudiant :</string>
+    <string name="textPassword">Mot de passe</string>
+    <string name="textPassword2"></string>
+    <color name="black">#000000</color>
+    <color name="grey">#808080</color>
+
+</resources>
