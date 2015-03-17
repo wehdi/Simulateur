@@ -50,7 +50,7 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		textPassword = (EditText) findViewById(R.id.textPassword);
 
 		// initialisation des preferences (android)
-		sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+	//	sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 	
 
 		// ///
@@ -76,11 +76,11 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 			 * 
 			 * }
 			 */
-			
-			creatAgent("agentGestion", Agent_Gestion.class.getName());
 			creatAgent("agentLogin", AgentLogin.class.getName());
+			creatAgent("agentGestion", Agent_Gestion.class.getName());
 			
-			//System.exit(0);
+			
+			
 			
 			break;
 		/*
@@ -89,7 +89,7 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		 * break;
 		 */
 		default:
-			//
+			System.exit(0);
 		}
 	}
 	 public void toastErreur(String text) {
