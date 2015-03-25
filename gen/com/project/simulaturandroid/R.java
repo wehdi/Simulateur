@@ -252,15 +252,18 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001d;
+        public static final int action_settings=0x7f090020;
         public static final int alignBounds=0x7f090002;
         public static final int alignMargins=0x7f090003;
         public static final int bottom=0x7f090004;
-        public static final int button2=0x7f090013;
-        public static final int button3=0x7f090014;
-        public static final int buttonExit=0x7f090015;
-        public static final int buttonPlanning=0x7f090012;
-        public static final int buttonSeConnecter=0x7f090016;
+        public static final int button1=0x7f090012;
+        public static final int buttonCreate=0x7f090018;
+        public static final int buttonExit=0x7f090016;
+        public static final int buttonHelp=0x7f090015;
+        public static final int buttonIHelp=0x7f090017;
+        public static final int buttonPlanning=0x7f090014;
+        public static final int buttonSeConnecter=0x7f090019;
+        public static final int buttonSearch=0x7f090013;
         public static final int center=0x7f090005;
         public static final int center_horizontal=0x7f090006;
         public static final int center_vertical=0x7f090007;
@@ -270,16 +273,16 @@ containing a value of this type.
         public static final int fill=0x7f09000b;
         public static final int fill_horizontal=0x7f09000c;
         public static final int fill_vertical=0x7f09000d;
-        public static final int gridview1=0x7f09001b;
+        public static final int gridview1=0x7f09001e;
         public static final int horizontal=0x7f090000;
-        public static final int labelPassword=0x7f09001a;
-        public static final int labelUserName=0x7f090018;
+        public static final int labelPassword=0x7f09001d;
+        public static final int labelUserName=0x7f09001b;
         public static final int left=0x7f09000e;
         public static final int right=0x7f09000f;
         public static final int start=0x7f090010;
-        public static final int textPassword=0x7f090017;
-        public static final int textUserName=0x7f090019;
-        public static final int textt=0x7f09001c;
+        public static final int textPassword=0x7f09001a;
+        public static final int textUserName=0x7f09001c;
+        public static final int textt=0x7f09001f;
         public static final int top=0x7f090011;
         public static final int vertical=0x7f090001;
     }

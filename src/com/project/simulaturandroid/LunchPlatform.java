@@ -20,8 +20,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.project.agent.AgentLogin;
+import com.project.agent.Agent_Contexte;
 import com.project.agent.Agent_Gestion;
+import com.project.agent.Agent_Interface;
 
 public class LunchPlatform extends Activity implements View.OnClickListener {
 	private Button buttonLunch;
@@ -30,19 +31,18 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 	private EditText textPassword;
 	private final String tostEmpty = "Veuiller remplir tous les champs !";
 
-
 	private static final String TAG = "AgentLuncher";
 	private RuntimeServiceBinder runtimeServiceBinder;
 	private ServiceConnection serviceConnection;
 	private AgentContainerHandler agentContainerHandler;
 	private SharedPreferences sharedPreferences;
-	
+	private Beans bean;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lunch_main);
-
+		bean = new Beans();
 		buttonLunch = (Button) findViewById(R.id.buttonSeConnecter);
 		buttonLunch.setOnClickListener(this);
 
@@ -50,11 +50,11 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		textPassword = (EditText) findViewById(R.id.textPassword);
 
 		// initialisation des preferences (android)
-	//	sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-	
-
+		sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+		// cc.bindService(getApplicationContext());
 		// ///
 	}
+
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -66,22 +66,21 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		case R.id.buttonSeConnecter:
 			String userName = textUserName.getText().toString();
 			String password = textPassword.getText().toString();
+			if (userName.isEmpty() || password.isEmpty()) {
+				Toast.makeText(getApplicationContext(), tostEmpty,
+						Toast.LENGTH_SHORT).show();
+			} else {
+				/*
+				 * Intent intent = new Intent(LunchPlatform.this, Loged.class);
+				 * this.startActivity(intent);
+				 */
+				creatAgent("agentInterface", Agent_Interface.class.getName());
+				bean.setLogin(userName);
+				bean.setMdp(password);
+				creatAgent("agentGestion", Agent_Gestion.class.getName());
+				creatAgent("agentContexte", Agent_Contexte.class.getName());
 
-			/*
-			 * if (userName.isEmpty() || password.isEmpty()) {
-			 * Toast.makeText(getApplicationContext(), tostEmpty,
-			 * Toast.LENGTH_SHORT).show(); } else { Intent intent = new
-			 * Intent(AgentLuncher.this, AgentAssistant.class);
-			 * this.startActivity(intent);
-			 * 
-			 * }
-			 */
-			creatAgent("agentLogin", AgentLogin.class.getName());
-			creatAgent("agentGestion", Agent_Gestion.class.getName());
-			
-			
-			
-			
+			}
 			break;
 		/*
 		 * case R.id.buttonLunch2: editText.setText(" ");
@@ -89,12 +88,14 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		 * break;
 		 */
 		default:
-			System.exit(0);
+			//
 		}
 	}
-	 public void toastErreur(String text) {
-		 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show(); 
-		
+
+	public void toastErreur(String text) {
+		Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT)
+				.show();
+
 	}
 
 	// Creat jade container :)
@@ -152,7 +153,7 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 
 	}
 
-	private void creatAgent(String name, String _TAG) {
+	public void creatAgent(String name, String _TAG) {
 		if (agentContainerHandler != null) {
 			agentContainerHandler.createNewAgent(name, _TAG,
 					new Object[] { LunchPlatform.this },
@@ -181,12 +182,5 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 			Log.e(TAG, "###Can't get Main-Container to create agent");
 		}
 	}
-	
-
-	
-	
-
-	
-	
 
 }

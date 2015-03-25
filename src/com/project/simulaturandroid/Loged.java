@@ -13,44 +13,46 @@ public class Loged extends Activity implements View.OnClickListener {
 	public Loged() {
 		// TODO Auto-generated constructor stub
 	}
+
 	private Button buttonExit;
 	private Button buttonPlanning;
-	private Button button1;
-	private Button button2;
+	private Button buttonHelp;
+	private Button buttonIHelp;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_layout);
 		this.buttonPlanning = (Button) findViewById(R.id.buttonPlanning);
 		this.buttonExit = (Button) findViewById(R.id.buttonExit);
-		button1 = (Button) findViewById(R.id.button2);
-		button2 = (Button) findViewById(R.id.button3);
+		buttonHelp = (Button) findViewById(R.id.buttonHelp);
+		buttonIHelp = (Button) findViewById(R.id.buttonIHelp);
 		buttonPlanning.setOnClickListener(this);
 		buttonExit.setOnClickListener(this);
-		button1.setOnClickListener(this);
-		button2.setOnClickListener(this);
+		buttonHelp.setOnClickListener(this);
+		buttonIHelp.setOnClickListener(this);
 	}
+
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		case R.id.buttonPlanning:			
+		case R.id.buttonPlanning:
 			Intent intent = new Intent(Loged.this, Planning.class);
-			Log.i("voici :" ,"voici ici");
 			this.startActivity(intent);
-			Log.i("voici :" ,"voici ici2");
-			finish();
 			break;
 		case R.id.buttonExit:
+			System.exit(0);
 			break;
 		default:
 			Log.e("Loged", "Default switch used !!");
-			finishAffinity();
+
 		}
-	}	
+	}
+
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		finish();
+
 	}
 }
