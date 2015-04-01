@@ -36,8 +36,25 @@
             android:name=".Planning"
             android:configChanges="orientation|screenSize"
             android:label="Assistant"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"  >
         </activity>
+        
+           <activity
+            android:name=".MapClass"
+            android:configChanges="orientation|screenSize"
+            android:label="Search"
+            android:screenOrientation="landscape"
+             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+         
+         <activity
+            android:name=".Notify"
+            android:label="Welcomp" >
+        </activity>
+        
+         <service android:enabled="true" android:name=".NotifyService" />
+      
        
     </application>
 

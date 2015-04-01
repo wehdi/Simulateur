@@ -51,8 +51,7 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 
 		// initialisation des preferences (android)
 		sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-		// cc.bindService(getApplicationContext());
-		// ///
+
 	}
 
 	@Override

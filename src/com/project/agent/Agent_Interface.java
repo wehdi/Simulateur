@@ -5,11 +5,9 @@ import jade.content.lang.sl.SLCodec;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
 import jade.core.behaviours.ParallelBehaviour;
 import jade.domain.introspection.ACLMessage;
-import android.R.bool;
+import jade.lang.acl.MessageTemplate;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,7 +24,7 @@ public class Agent_Interface extends Agent {
 	private Codec codec = new SLCodec();
 	private jade.lang.acl.ACLMessage message;
 	private String agentName = "agentBdd";
-	private String ipAddress = "192.168.2.4";
+	private String ipAddress = "192.168.2.2";
 
 	private LunchPlatform err;
 	private final String TAG = "Agent_Interface";
@@ -82,8 +80,8 @@ public class Agent_Interface extends Agent {
 			requestLoginMessage.setConversationId("id");
 			requestLoginMessage.setContent(userName + "|" + mdp);
 			AID dummyAid = new AID();
-			dummyAid.setName("agentBdd@192.168.2.4:1099/JADE");
-			dummyAid.addAddresses("http://192.168.2.4:7778/acc");
+			dummyAid.setName("agentBdd@192.168.2.2:1099/JADE");
+			dummyAid.addAddresses("http://192.168.2.2:7778/acc");
 			requestLoginMessage.addReceiver(dummyAid);
 			send(requestLoginMessage);
 
@@ -99,17 +97,20 @@ public class Agent_Interface extends Agent {
 	// class de receptions des messages
 	public class Lo2 extends Behaviour {
 		private static final long serialVersionUID = 1L;
-		
 
 		public Lo2(Agent a) {
 			super(a);
 		}
 
 		public void action() {
-			jade.lang.acl.ACLMessage reponseLoginMessage = receive();
+			MessageTemplate model = MessageTemplate.and(MessageTemplate
+					.MatchPerformative(jade.lang.acl.ACLMessage.INFORM),
+					MessageTemplate.MatchConversationId("resp"));
+			jade.lang.acl.ACLMessage reponseLoginMessage = receive(model);
 			if (reponseLoginMessage != null) {
 				String validateConnection = reponseLoginMessage.getContent()
 						.toString();
+				
 				if (validateConnection.equals("ok")) {
 					Agent_Interface.this.context.startActivity(new Intent(
 							Agent_Interface.this.context,

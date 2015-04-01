@@ -2,6 +2,8 @@ package com.project.simulaturandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
@@ -21,6 +23,8 @@ public class Planning extends Activity {
 				R.layout.activity_planning_layout, R.id.textt,
 				bean.getPlanningTab());
 		gridView.setAdapter(adapter);
+		
+		
 
 	}
 }

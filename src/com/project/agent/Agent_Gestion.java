@@ -22,7 +22,7 @@ public class Agent_Gestion extends Agent {
 	private final String PREFS_FILE_NAME = "jade.preferences";
 	private Context context;
 	private String agentName = "agentBdd";
-	private String ipAddress = "192.168.2.4";
+	private String ipAddress = "192.168.2.2";
 	public static String PREFS_HOST_ADDRESS = "HOST_ADDRESS";
 	private ArrayList<String> content = null;
 	private Beans bean;
@@ -38,6 +38,7 @@ public class Agent_Gestion extends Agent {
 			}
 		}
 		addBehaviour(new Do(this));
+
 		// comportementSequentiel.addSubBehaviour(new Do(this));
 		// addBehaviour(comportementSequentiel);
 
@@ -63,24 +64,25 @@ public class Agent_Gestion extends Agent {
 			ACLMessage msg = myAgent.receive(model);
 			if (msg != null) {
 				try {
-					//rempli le planning
+					// rempli le planning
 					content = (ArrayList<String>) msg.getContentObject();
 					bean.setPlanningTab(content);
-					//envoi un rep pour stoper l'envoi du planning
-					ACLMessage reponsemessage = new ACLMessage(ACLMessage.INFORM);
+					// envoi un rep pour stoper l'envoi du planning
+					ACLMessage reponsemessage = new ACLMessage(
+							ACLMessage.INFORM);
 					reponsemessage.setConversationId("stop_planning");
 					reponsemessage.setContent("stop");
 					AID dummyAid = new AID();
-					dummyAid.setName("agentBdd@192.168.2.4:1099/JADE");
-					dummyAid.addAddresses("http://192.168.2.4:7778/acc");
+					dummyAid.setName("agentBdd@192.168.2.2:1099/JADE");
+					dummyAid.addAddresses("http://192.168.2.2:7778/acc");
 					reponsemessage.addReceiver(dummyAid);
 					send(reponsemessage);
-					
 
 				} catch (UnreadableException e) {
 					Log.i("Agent_Gestion", "ACLMessage probleme");
 					e.printStackTrace();
-				}stop = true;
+				}
+				block();
 
 			} else {
 				block();
@@ -93,19 +95,5 @@ public class Agent_Gestion extends Agent {
 			return stop;
 		}
 	}
-
-	/*
-	 * class Do2 extends CyclicBehaviour { public Do2(Agent_Gestion
-	 * agentGestion) { }
-	 * 
-	 * @Override public void action() { ACLMessage message = new
-	 * ACLMessage(ACLMessage.INFORM); // message.setLanguage(codec.getName());
-	 * message.setContent("hello je suis obile"); AID dummyAid = new AID();
-	 * dummyAid.setName("agentBdd@192.168.2.4:1099/JADE");
-	 * dummyAid.addAddresses("http://192.168.2.4:7778/acc");
-	 * message.addReceiver(dummyAid); send(message); }
-	 * 
-	 * }
-	 */
 
 }

@@ -18,6 +18,8 @@ public class Loged extends Activity implements View.OnClickListener {
 	private Button buttonPlanning;
 	private Button buttonHelp;
 	private Button buttonIHelp;
+	private Button buttonCreat;
+	private Button buttonSearch;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,14 @@ public class Loged extends Activity implements View.OnClickListener {
 		this.buttonExit = (Button) findViewById(R.id.buttonExit);
 		buttonHelp = (Button) findViewById(R.id.buttonHelp);
 		buttonIHelp = (Button) findViewById(R.id.buttonIHelp);
+		buttonCreat = (Button) findViewById(R.id.buttonCreate);
+		buttonSearch = (Button) findViewById(R.id.buttonSearch);
 		buttonPlanning.setOnClickListener(this);
 		buttonExit.setOnClickListener(this);
 		buttonHelp.setOnClickListener(this);
 		buttonIHelp.setOnClickListener(this);
+		buttonCreat.setOnClickListener(this);
+		buttonSearch.setOnClickListener(this);
 	}
 
 	@Override
@@ -39,6 +45,10 @@ public class Loged extends Activity implements View.OnClickListener {
 		case R.id.buttonPlanning:
 			Intent intent = new Intent(Loged.this, Planning.class);
 			this.startActivity(intent);
+			break;
+		case R.id.buttonSearch:
+			Intent intentMap = new Intent(Loged.this, MapClass.class);
+			 this.startActivity(intentMap);
 			break;
 		case R.id.buttonExit:
 			System.exit(0);

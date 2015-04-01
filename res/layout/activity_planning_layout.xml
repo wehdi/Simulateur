@@ -11,12 +11,12 @@
         android:layout_height="fill_parent"
         android:layout_margin="10dp"
         android:columnWidth="66dp"
-        android:paddingTop="20dp" 
+        android:paddingTop="10dp" 
         android:gravity="center"
         android:horizontalSpacing="3dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="20dp" >
+        android:verticalSpacing="3dp" >
     </GridView>
 
     <TextView
