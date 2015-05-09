@@ -2,11 +2,15 @@ package com.project.simulaturandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
+/**
+ * 
+ * 
+ * @author ProBook 450g2 Classe qui gere le planning, elle recoit les donnees
+ *         puis les affiches dans un gridView
+ */
 public class Planning extends Activity {
 	GridView gridView;
 	private Beans bean;
@@ -23,8 +27,6 @@ public class Planning extends Activity {
 				R.layout.activity_planning_layout, R.id.textt,
 				bean.getPlanningTab());
 		gridView.setAdapter(adapter);
-		
-		
 
 	}
 }

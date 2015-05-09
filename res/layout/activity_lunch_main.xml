@@ -7,23 +7,40 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.project.simulaturandroid.LunchPlatform"
+   
    >
-
+ <!-- android:background="@drawable/backgroundlogin2"
+  android:background="@drawable/round_button"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#fff"
+ -->
     <Button
         android:id="@+id/buttonSeConnecter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+         android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="79dp"
-        android:layout_marginLeft="80dp"
-        android:text="@string/seConnecter" />
-
+        android:layout_marginLeft="85dp"
+        android:text="Login"
+        />
+    
+   <EditText
+        android:id="@+id/textUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelUserName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:text="@string/textUserName" />
+    
     <EditText
         android:id="@+id/textPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+       
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPassword"
@@ -46,14 +63,6 @@
         android:layout_alignLeft="@+id/textUserName"
         android:text="Mot de passe :" />
 
-    <EditText
-        android:id="@+id/textUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textPassword"
-        android:layout_below="@+id/labelUserName"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:text="@string/textUserName" />
+    
 
 </RelativeLayout>

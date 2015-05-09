@@ -1,4 +1,10 @@
 package com.project.simulaturandroid;
+/**
+ * 
+ * Class Beans contien different getter et setter
+ * 
+ *  @author ProBook 450g2
+ */
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +15,6 @@ public class Beans implements Serializable, jade.util.leap.Serializable {
 		private static ArrayList<String> planningTab = new ArrayList<>();
 		private static String login = null;
 		private static String mdp = null;
-		private static boolean canConnect = false;
 		
 		public static String getLogin() {
 			return login;

@@ -1,6 +1,11 @@
 package com.project.simulaturandroid;
 
 import jade.android.AgentContainerHandler;
+/**
+ * @author ProBook 450g2
+ * 
+ * Class de lancement de la platform Jade et de l'interface de connexion
+ */
 import jade.android.AgentHandler;
 import jade.android.RuntimeCallback;
 import jade.android.RuntimeService;
@@ -35,7 +40,6 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 	private RuntimeServiceBinder runtimeServiceBinder;
 	private ServiceConnection serviceConnection;
 	private AgentContainerHandler agentContainerHandler;
-	private SharedPreferences sharedPreferences;
 	private Beans bean;
 
 	@Override
@@ -45,12 +49,9 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		bean = new Beans();
 		buttonLunch = (Button) findViewById(R.id.buttonSeConnecter);
 		buttonLunch.setOnClickListener(this);
-
 		textUserName = (EditText) findViewById(R.id.textUserName);
+	//	textUserName.getFoc
 		textPassword = (EditText) findViewById(R.id.textPassword);
-
-		// initialisation des preferences (android)
-		sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 
 	}
 
@@ -63,15 +64,17 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.buttonSeConnecter:
+			/**
+			 * Recuperation des ids
+			 */
 			String userName = textUserName.getText().toString();
 			String password = textPassword.getText().toString();
 			if (userName.isEmpty() || password.isEmpty()) {
 				Toast.makeText(getApplicationContext(), tostEmpty,
 						Toast.LENGTH_SHORT).show();
 			} else {
-				/*
-				 * Intent intent = new Intent(LunchPlatform.this, Loged.class);
-				 * this.startActivity(intent);
+				/**
+				 * Creation des 3 agents du smartphone
 				 */
 				creatAgent("agentInterface", Agent_Interface.class.getName());
 				bean.setLogin(userName);
@@ -81,13 +84,8 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 
 			}
 			break;
-		/*
-		 * case R.id.buttonLunch2: editText.setText(" ");
-		 * 
-		 * break;
-		 */
+
 		default:
-			//
 		}
 	}
 
@@ -97,27 +95,25 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 
 	}
 
-	// Creat jade container :)
+	/**
+	 * Creation du jade container
+	 */
 	private void bindService() {
-		// Check runtime service
+
 		if (runtimeServiceBinder == null) {
-			// Create Runtime Service Binder here
 			serviceConnection = new ServiceConnection() {
 				@Override
 				public void onServiceConnected(ComponentName componentName,
 						IBinder service) {
 					runtimeServiceBinder = (RuntimeServiceBinder) service;
-					// Log.i(TAG,
-					// "###Gateway successfully bound to RuntimeService");
 					startMainContainer();
 				}
 
 				@Override
 				public void onServiceDisconnected(ComponentName componentName) {
-					// Log.i(TAG, "###Gateway unbound from RuntimeService");
 				}
 			};
-			// Log.i(TAG, "###Binding Gateway to RuntimeService...");
+
 			bindService(new Intent(getApplicationContext(),
 					RuntimeService.class), serviceConnection,
 					Context.BIND_AUTO_CREATE);
@@ -127,6 +123,9 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 
 	}
 
+	/**
+	 * Lancement du main container
+	 */
 	private void startMainContainer() {
 		runtimeServiceBinder
 				.createMainAgentContainer(new RuntimeCallback<AgentContainerHandler>() {
@@ -152,6 +151,12 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 
 	}
 
+	/**
+	 * Creation de l'agent
+	 * 
+	 * @param name
+	 * @param _TAG
+	 */
 	public void creatAgent(String name, String _TAG) {
 		if (agentContainerHandler != null) {
 			agentContainerHandler.createNewAgent(name, _TAG,
