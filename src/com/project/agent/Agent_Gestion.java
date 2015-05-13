@@ -8,6 +8,7 @@ package com.project.agent;
  *  - Recevoir le planning depuis l'agent Controller
  *  -l'envoyer a la vu pour etre pour etre affiché
  *  - Envoyer une reponse a l'agent scoloar pour stop l'arrivé de msg
+ *  -Gerer la revision l nbr de groupe qui existe
  * 
  */
 
@@ -20,20 +21,33 @@ import jade.lang.acl.UnreadableException;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.project.simulaturandroid.Beans;
 import com.project.simulaturandroid.Const;
+import com.project.simulaturandroid.NombreGroupeBean;
 
 @SuppressWarnings("serial")
 public class Agent_Gestion extends Agent {
+	private Context context;
 	private final String TAG = "Agent_Gestion";
 	private Beans bean;
 
 	protected void setup() {
 		super.setup();
+
+		Object[] args = getArguments();
+		if (args != null && args.length > 0) {
+			if (args[0] instanceof Context) {
+				context = (Context) args[0];
+			}
+		}
 		bean = new Beans();
 		addBehaviour(new Do(this));
+		addBehaviour(new GroupeRevision(this));
+		addBehaviour(new NotifyABSProf(this));
 	}
 
 	/**
@@ -41,7 +55,7 @@ public class Agent_Gestion extends Agent {
 	 * 
 	 *
 	 */
-	class Do extends Behaviour {
+	private class Do extends Behaviour {
 		private boolean stop = false;
 
 		public Do(Agent a) {
@@ -102,4 +116,86 @@ public class Agent_Gestion extends Agent {
 		}
 	}
 
+	/**
+	 * Comportement qui permet de recevoir le nombre de groupe actuellement
+	 * entrain de reviser
+	 */
+	private class GroupeRevision extends Behaviour {
+		NombreGroupeBean nbrGroupeBen = new NombreGroupeBean();
+
+		public GroupeRevision(Agent_Gestion agent_Gestion) {
+
+		}
+
+		public void action() {
+
+			MessageTemplate model = MessageTemplate.and(MessageTemplate
+					.MatchPerformative(jade.lang.acl.ACLMessage.INFORM),
+					MessageTemplate.MatchConversationId("revision"));
+			jade.lang.acl.ACLMessage msgNombrGroupe = receive(model);
+			/**
+			 * 
+			 */
+			if (msgNombrGroupe != null) {
+				int nbrGroupe = Integer.parseInt(msgNombrGroupe.getContent()
+						.toString());
+				nbrGroupeBen.setNmbrGroupe(nbrGroupe);
+			} else {
+				block();
+			}
+		}
+
+		@Override
+		public boolean done() {
+
+			return false;
+		}
+
+	}
+
+	/**
+	 * 
+	 * 
+	 */
+	@SuppressWarnings("unused")
+	private class NotifyABSProf extends Behaviour {
+
+		public NotifyABSProf(Agent_Gestion agent_Gestion) {
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public void action() {
+			MessageTemplate model = MessageTemplate.and(MessageTemplate
+					.MatchPerformative(jade.lang.acl.ACLMessage.INFORM),
+					MessageTemplate.MatchConversationId("abs"));
+			jade.lang.acl.ACLMessage message = receive(model);
+			/**
+			 * 
+			 */
+			if (message != null) {
+				Intent myIntent = new Intent(Agent_Gestion.this.context,
+						com.project.simulaturandroid.NotifyService.class);
+				/**
+				 * Ajout des msgs de notifications
+				 */
+				myIntent.putExtra("titre", "Abscence du prof");
+				myIntent.putExtra("corp_titre", "Notification d'abscence");
+				myIntent.putExtra("corp",
+						"Le prof est abscent changement dans le cours");
+				Agent_Gestion.this.context.startService(myIntent);
+
+			} else {
+				block();
+			}
+
+		}
+
+		@Override
+		public boolean done() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+	}
 }

@@ -5,6 +5,8 @@ package com.project.agent;
  * 
  *  Cette classe se charge de la gestion du contexte
  */
+import com.project.simulaturandroid.Beans;
+
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
@@ -22,6 +24,9 @@ public class Agent_Contexte extends Agent {
 	protected void setup() {
 
 		super.setup();
+		/**
+		 * Recupmeration du contexte
+		 */
 		Object[] args = getArguments();
 		if (args != null && args.length > 0) {
 			if (args[0] instanceof Context) {
@@ -57,9 +62,17 @@ public class Agent_Contexte extends Agent {
 				/**
 				 * Lance l'intent qui envoi la notification (service)
 				 */
-				Agent_Contexte.this.context.startService(new Intent(
-						Agent_Contexte.this.context,
-						com.project.simulaturandroid.NotifyService.class));
+				Intent myIntent = new Intent(Agent_Contexte.this.context,
+						com.project.simulaturandroid.NotifyService.class);
+				/**
+				 * Ajout des msgs de notifications
+				 */
+				myIntent.putExtra("titre", "Bienvenu a l'université");
+				myIntent.putExtra("corp_titre", "Bienvenu "+Beans.getLogin());
+				myIntent.putExtra("corp",
+						"Voici les nouvelles informations :");
+				Agent_Contexte.this.context.startService(myIntent);
+
 				block();
 			} else {
 

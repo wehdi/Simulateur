@@ -6,6 +6,7 @@ import android.os.Bundle;
 /**
  * 
  * @author ProBook 450g2
+ * Pendig intent
  *
  */
 public class NotifyMessage extends Activity {

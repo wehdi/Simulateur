@@ -121,11 +121,14 @@ public class Agent_Interface extends Agent {
 			if (reponseLoginMessage != null) {
 				String validateConnection = reponseLoginMessage.getContent()
 						.toString();
+				//validateConnection.substring(0, 2);
 
-				if (validateConnection.equals("ok")) {
+				if (validateConnection.substring(0, 2).equals("ok")) {
 					Agent_Interface.this.context.startActivity(new Intent(
 							Agent_Interface.this.context,
 							com.project.simulaturandroid.Loged.class));
+					bean.setLogin(validateConnection.substring(3, validateConnection.length()));
+					
 					stop2 = true;
 					block();
 				} else {

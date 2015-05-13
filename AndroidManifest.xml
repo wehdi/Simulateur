@@ -52,6 +52,10 @@
             android:name=".Notify"
             android:label="Welcomp" >
         </activity>
+          <activity
+            android:name=".NotifyMessage"
+            android:label="TEST" >
+        </activity>
         
          <service android:enabled="true" android:name=".NotifyService" />
       
