@@ -262,10 +262,10 @@ containing a value of this type.
         public static final int alignMargins=0x7f090003;
         public static final int bottom=0x7f090004;
         public static final int button1=0x7f090013;
-        public static final int buttonCreate=0x7f090018;
+        public static final int buttonCreate=0x7f090017;
         public static final int buttonExit=0x7f090012;
-        public static final int buttonHelp=0x7f090016;
-        public static final int buttonIHelp=0x7f090017;
+        public static final int buttonHelp=0x7f090018;
+        public static final int buttonIHelp=0x7f090016;
         public static final int buttonPlanning=0x7f090015;
         public static final int buttonSeConnecter=0x7f090019;
         public static final int buttonSearch=0x7f090014;

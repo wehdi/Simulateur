@@ -61,14 +61,15 @@ public class NotifyService extends Service {
 		/**
 		 * Pending intent qui va s'ouvrir ares le click sur la notification
 		 */
-		PendingIntent i = PendingIntent.getActivity(this, 0, new Intent(this,
+		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
 				NotifyMessage.class), 0);
+		note.contentIntent = pendingIntent;
 
 		/**
 		 * Envoi de la notification
 		 */
 
-		note.setLatestEventInfo(this, message_corp_titre, message_corp, i);
+		note.setLatestEventInfo(this, message_corp_titre, message_corp, pendingIntent);
 
 		mgr.notify(-1, note);
 		/**
