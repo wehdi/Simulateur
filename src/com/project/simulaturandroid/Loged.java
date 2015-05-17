@@ -78,7 +78,7 @@ public class Loged extends Activity implements View.OnClickListener {
 			break;
 		case R.id.buttonCreate:
 		//	lunchBarDialog(view);
-			lunchLoading(view);
+			//lunchLoading(view);
 		default:
 			Log.e("Loged", "Default switch used !!");
 
@@ -106,6 +106,7 @@ public class Loged extends Activity implements View.OnClickListener {
 					// TODO: handle exception
 				}
 				loadpProgressDialog.dismiss();
+				//finish();
 				Intent intent = new Intent(Loged.this, Planning.class);
 				Loged.this.startActivity(intent);
 

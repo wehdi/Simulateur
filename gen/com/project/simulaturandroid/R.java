@@ -33,6 +33,15 @@ public final class R {
 </table>
          */
         public static final int alignmentMode=0x7f010004;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int buttonColor=0x7f01000f;
         /**  The maximum number of columns to create when automatically positioning children. 
          <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
@@ -56,6 +65,16 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int columnOrderPreserved=0x7f010006;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cornerRadius=0x7f010012;
         /** 
         The column boundary delimiting the left of the group of cells
         occupied by this view.
@@ -215,6 +234,33 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int rowOrderPreserved=0x7f010005;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int shadowColor=0x7f010010;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int shadowEnabled=0x7f01000e;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int shadowHeight=0x7f010011;
         /** 
         When set to true, tells GridLayout to use default margins when none are specified
         in a view's layout parameters.
@@ -232,6 +278,29 @@ containing a value of this type.
     }
     public static final class color {
         public static final int black=0x7f060000;
+        public static final int fbutton_color_alizarin=0x7f060002;
+        public static final int fbutton_color_amethyst=0x7f060003;
+        public static final int fbutton_color_asbestos=0x7f060004;
+        public static final int fbutton_color_belize_hole=0x7f060005;
+        public static final int fbutton_color_carrot=0x7f060006;
+        public static final int fbutton_color_clouds=0x7f060007;
+        public static final int fbutton_color_concrete=0x7f060008;
+        public static final int fbutton_color_emerald=0x7f060009;
+        public static final int fbutton_color_green_sea=0x7f06000a;
+        public static final int fbutton_color_midnight_blue=0x7f06000b;
+        public static final int fbutton_color_nephritis=0x7f06000c;
+        public static final int fbutton_color_orange=0x7f06000d;
+        public static final int fbutton_color_peter_river=0x7f06000e;
+        public static final int fbutton_color_pomegranate=0x7f06000f;
+        public static final int fbutton_color_pumpkin=0x7f060010;
+        public static final int fbutton_color_silver=0x7f060011;
+        public static final int fbutton_color_sun_flower=0x7f060012;
+        public static final int fbutton_color_transparent=0x7f060013;
+        public static final int fbutton_color_turquoise=0x7f060014;
+        public static final int fbutton_color_wet_asphalt=0x7f060015;
+        public static final int fbutton_color_wisteria=0x7f060016;
+        public static final int fbutton_default_color=0x7f060017;
+        public static final int fbutton_default_shadow_color=0x7f060018;
         public static final int grey=0x7f060001;
     }
     public static final class dimen {
@@ -247,6 +316,12 @@ containing a value of this type.
         /**  The default gap between components in a layout. 
          */
         public static final int default_gap=0x7f040000;
+        public static final int fbutton_default_conner_radius=0x7f040003;
+        public static final int fbutton_default_padding_bottom=0x7f040004;
+        public static final int fbutton_default_padding_left=0x7f040005;
+        public static final int fbutton_default_padding_right=0x7f040006;
+        public static final int fbutton_default_padding_top=0x7f040007;
+        public static final int fbutton_default_shadow_height=0x7f040008;
     }
     public static final class drawable {
         public static final int backgroundlogin=0x7f020000;
@@ -257,7 +332,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int DrawingImageView=0x7f09001e;
-        public static final int action_settings=0x7f090021;
+        public static final int action_settings=0x7f090022;
         public static final int alignBounds=0x7f090002;
         public static final int alignMargins=0x7f090003;
         public static final int bottom=0x7f090004;
@@ -279,6 +354,7 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f09000c;
         public static final int fill_vertical=0x7f09000d;
         public static final int gridview1=0x7f09001f;
+        public static final int gridview2=0x7f090021;
         public static final int horizontal=0x7f090000;
         public static final int labelPassword=0x7f09001d;
         public static final int labelUserName=0x7f09001b;
@@ -297,6 +373,7 @@ containing a value of this type.
         public static final int activity_lunch_main=0x7f030002;
         public static final int activity_mapclass_layout=0x7f030003;
         public static final int activity_planning_layout=0x7f030004;
+        public static final int activity_planning_layout2=0x7f030005;
     }
     public static final class menu {
         public static final int lunch_main=0x7f080000;
@@ -342,6 +419,104 @@ containing a value of this type.
         public static final int AppTheme=0x7f070001;
     }
     public static final class styleable {
+        /** Attributes that can be used with a FButton.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #FButton_buttonColor com.project.simulaturandroid:buttonColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #FButton_cornerRadius com.project.simulaturandroid:cornerRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #FButton_shadowColor com.project.simulaturandroid:shadowColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #FButton_shadowEnabled com.project.simulaturandroid:shadowEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #FButton_shadowHeight com.project.simulaturandroid:shadowHeight}</code></td><td></td></tr>
+           </table>
+           @see #FButton_buttonColor
+           @see #FButton_cornerRadius
+           @see #FButton_shadowColor
+           @see #FButton_shadowEnabled
+           @see #FButton_shadowHeight
+         */
+        public static final int[] FButton = {
+            0x7f01000e, 0x7f01000f, 0x7f010010, 0x7f010011,
+            0x7f010012
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.project.simulaturandroid.R.attr#buttonColor}
+          attribute's value can be found in the {@link #FButton} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.simulaturandroid:buttonColor
+        */
+        public static final int FButton_buttonColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.project.simulaturandroid.R.attr#cornerRadius}
+          attribute's value can be found in the {@link #FButton} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.simulaturandroid:cornerRadius
+        */
+        public static final int FButton_cornerRadius = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.project.simulaturandroid.R.attr#shadowColor}
+          attribute's value can be found in the {@link #FButton} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.simulaturandroid:shadowColor
+        */
+        public static final int FButton_shadowColor = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.project.simulaturandroid.R.attr#shadowEnabled}
+          attribute's value can be found in the {@link #FButton} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.simulaturandroid:shadowEnabled
+        */
+        public static final int FButton_shadowEnabled = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.project.simulaturandroid.R.attr#shadowHeight}
+          attribute's value can be found in the {@link #FButton} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.simulaturandroid:shadowHeight
+        */
+        public static final int FButton_shadowHeight = 3;
         /** Attributes that can be used with a GridLayout.
            <p>Includes the following attributes:</p>
            <table>

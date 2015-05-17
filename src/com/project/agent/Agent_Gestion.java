@@ -15,6 +15,7 @@ package com.project.agent;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
@@ -45,9 +46,10 @@ public class Agent_Gestion extends Agent {
 			}
 		}
 		bean = new Beans();
-		addBehaviour(new Do(this));
+		addBehaviour(new GetPlanning(this));
 		addBehaviour(new GroupeRevision(this));
 		addBehaviour(new NotifyABSProf(this));
+		addBehaviour(new UpdatePlanning());
 	}
 
 	/**
@@ -55,10 +57,10 @@ public class Agent_Gestion extends Agent {
 	 * 
 	 *
 	 */
-	private class Do extends Behaviour {
+	private class GetPlanning extends Behaviour {
 		private boolean stop = false;
 
-		public Do(Agent a) {
+		public GetPlanning(Agent a) {
 			super(a);
 		}
 
@@ -154,8 +156,10 @@ public class Agent_Gestion extends Agent {
 	}
 
 	/**
+	 * Envoi une notification quand le prof est abscent
 	 * 
-	 * 
+	 * @author ProBook 450g2
+	 *
 	 */
 	@SuppressWarnings("unused")
 	private class NotifyABSProf extends Behaviour {
@@ -170,9 +174,6 @@ public class Agent_Gestion extends Agent {
 					.MatchPerformative(jade.lang.acl.ACLMessage.INFORM),
 					MessageTemplate.MatchConversationId("abs"));
 			jade.lang.acl.ACLMessage message = receive(model);
-			/**
-			 * 
-			 */
 			if (message != null) {
 				Intent myIntent = new Intent(Agent_Gestion.this.context,
 						com.project.simulaturandroid.NotifyService.class);
@@ -188,6 +189,49 @@ public class Agent_Gestion extends Agent {
 			} else {
 				block();
 			}
+
+		}
+
+		@Override
+		public boolean done() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+	}
+
+	/**
+	 * 
+	 * @author ProBook 450g2
+	 *
+	 */
+	private class UpdatePlanning extends Behaviour {
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public void action() {
+			MessageTemplate model = MessageTemplate.and(
+					MessageTemplate.MatchPerformative(ACLMessage.INFORM),
+					MessageTemplate.MatchConversationId("update"));
+			ACLMessage msgg = myAgent.receive(model);
+			if (msgg != null) {
+
+				/**
+				 * rempli le planning et l'envoyer pour pourvoir etre afficher
+				 */
+				try {
+					bean.setPlanningTab((ArrayList<String>) msgg
+							.getContentObject());
+					bean.setPlanningTabUpdated((ArrayList<String>) msgg
+							.getContentObject());
+					block();
+				} catch (UnreadableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			} else
+				block();
 
 		}
 

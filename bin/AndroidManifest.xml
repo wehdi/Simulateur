@@ -6,7 +6,7 @@
      >
 
     <uses-sdk
-        android:minSdkVersion="8"
+
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -46,11 +46,6 @@
             android:label="Search"
             android:screenOrientation="landscape"
              android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
-         
-         <activity
-            android:name=".Notify"
-            android:label="Welcomp" >
         </activity>
           <activity
             android:name=".NotifyMessage"

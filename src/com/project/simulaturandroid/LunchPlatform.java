@@ -1,6 +1,7 @@
 package com.project.simulaturandroid;
 
 import jade.android.AgentContainerHandler;
+//import com.lid.lib.LabelView;
 /**
  * @author ProBook 450g2
  * 
@@ -16,7 +17,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -41,6 +41,11 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 	private ServiceConnection serviceConnection;
 	private AgentContainerHandler agentContainerHandler;
 	private Beans bean;
+	
+	
+	
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +57,8 @@ public class LunchPlatform extends Activity implements View.OnClickListener {
 		textUserName = (EditText) findViewById(R.id.textUserName);
 	//	textUserName.getFoc
 		textPassword = (EditText) findViewById(R.id.textPassword);
-
+		
+		
 	}
 
 	@Override

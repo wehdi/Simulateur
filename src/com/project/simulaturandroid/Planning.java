@@ -1,7 +1,10 @@
 package com.project.simulaturandroid;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
@@ -13,20 +16,37 @@ import android.widget.GridView;
  */
 public class Planning extends Activity {
 	GridView gridView;
+
 	private Beans bean;
+	ArrayAdapter<String> adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		bean = new Beans();
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_planning_layout);
 
-		bean = new Beans();
-		gridView = (GridView) findViewById(R.id.gridview1);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		ArrayList<String> tab = new ArrayList<String>();
+		tab.addAll(bean.getPlanningTabUpdated());
+		adapter = new ArrayAdapter<String>(this,
 				R.layout.activity_planning_layout, R.id.textt,
 				bean.getPlanningTab());
+		gridView = (GridView) findViewById(R.id.gridview1);
 		gridView.setAdapter(adapter);
-
 	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// bean.getPlanningTab().clear();
+		super.onDestroy();
+
+		Log.i("dd", "doooooom" + bean.getPlanningTabUpdated());
+	}
+
 }

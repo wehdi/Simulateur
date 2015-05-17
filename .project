@@ -25,15 +25,9 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>edu.ksu.cis.agenttool.validation.at3ValidationBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>edu.ksu.cis.agenttool.validation.at3ValidationNature</nature>
 	</natures>
 </projectDescription>
