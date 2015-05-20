@@ -13,5 +13,16 @@
     <string name="textPassword2"></string>
     <color name="black">#000000</color>
     <color name="grey">#808080</color>
+   
+    <string-array name="module_array">
+        <item>Anglais</item>
+        <item>Test</item>
+        <item>Option</item>
+        <item>JMX</item>
+        <item>Algo</item>
+        <item>Poo</item>
+        <item>Web</item>
+    </string-array>
+
 
 </resources>

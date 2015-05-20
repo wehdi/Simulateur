@@ -8,6 +8,9 @@
 package com.project.simulaturandroid;
 
 public final class R {
+    public static final class array {
+        public static final int module_array=0x7f070000;
+    }
     public static final class attr {
         /** 
         When set to alignMargins, causes alignment to take place between the outer
@@ -331,52 +334,59 @@ containing a value of this type.
         public static final int round_button=0x7f020004;
     }
     public static final class id {
-        public static final int DrawingImageView=0x7f09001e;
-        public static final int action_settings=0x7f090022;
-        public static final int alignBounds=0x7f090002;
-        public static final int alignMargins=0x7f090003;
-        public static final int bottom=0x7f090004;
-        public static final int button1=0x7f090013;
-        public static final int buttonCreate=0x7f090017;
-        public static final int buttonExit=0x7f090012;
-        public static final int buttonHelp=0x7f090018;
-        public static final int buttonIHelp=0x7f090016;
-        public static final int buttonPlanning=0x7f090015;
-        public static final int buttonSeConnecter=0x7f090019;
-        public static final int buttonSearch=0x7f090014;
-        public static final int center=0x7f090005;
-        public static final int center_horizontal=0x7f090006;
-        public static final int center_vertical=0x7f090007;
-        public static final int clip_horizontal=0x7f090008;
-        public static final int clip_vertical=0x7f090009;
-        public static final int end=0x7f09000a;
-        public static final int fill=0x7f09000b;
-        public static final int fill_horizontal=0x7f09000c;
-        public static final int fill_vertical=0x7f09000d;
-        public static final int gridview1=0x7f09001f;
-        public static final int gridview2=0x7f090021;
-        public static final int horizontal=0x7f090000;
-        public static final int labelPassword=0x7f09001d;
-        public static final int labelUserName=0x7f09001b;
-        public static final int left=0x7f09000e;
-        public static final int right=0x7f09000f;
-        public static final int start=0x7f090010;
-        public static final int textPassword=0x7f09001c;
-        public static final int textUserName=0x7f09001a;
-        public static final int textt=0x7f090020;
-        public static final int top=0x7f090011;
-        public static final int vertical=0x7f090001;
+        public static final int DrawingImageView=0x7f0a0025;
+        public static final int action_settings=0x7f0a0028;
+        public static final int alignBounds=0x7f0a0002;
+        public static final int alignMargins=0x7f0a0003;
+        public static final int bottom=0x7f0a0004;
+        public static final int button1=0x7f0a001a;
+        public static final int buttonCreate=0x7f0a001e;
+        public static final int buttonCreer=0x7f0a0016;
+        public static final int buttonExit=0x7f0a0012;
+        public static final int buttonHelp=0x7f0a001f;
+        public static final int buttonIHelp=0x7f0a001d;
+        public static final int buttonPlanning=0x7f0a001c;
+        public static final int buttonSeConnecter=0x7f0a0020;
+        public static final int buttonSearch=0x7f0a001b;
+        public static final int buttonSelect=0x7f0a0015;
+        public static final int buttonSendHelpMe=0x7f0a0019;
+        public static final int center=0x7f0a0005;
+        public static final int center_horizontal=0x7f0a0006;
+        public static final int center_vertical=0x7f0a0007;
+        public static final int clip_horizontal=0x7f0a0008;
+        public static final int clip_vertical=0x7f0a0009;
+        public static final int end=0x7f0a000a;
+        public static final int fill=0x7f0a000b;
+        public static final int fill_horizontal=0x7f0a000c;
+        public static final int fill_vertical=0x7f0a000d;
+        public static final int gridview1=0x7f0a0026;
+        public static final int horizontal=0x7f0a0000;
+        public static final int labelPassword=0x7f0a0024;
+        public static final int labelUserName=0x7f0a0022;
+        public static final int left=0x7f0a000e;
+        public static final int right=0x7f0a000f;
+        public static final int spinner=0x7f0a0013;
+        public static final int spinnerHelpMe=0x7f0a0018;
+        public static final int start=0x7f0a0010;
+        public static final int textAreaHelpMe=0x7f0a0017;
+        public static final int textPassword=0x7f0a0023;
+        public static final int textUserName=0x7f0a0021;
+        public static final int textt=0x7f0a0027;
+        public static final int timePicker=0x7f0a0014;
+        public static final int top=0x7f0a0011;
+        public static final int vertical=0x7f0a0001;
     }
     public static final class layout {
         public static final int activity_alert_layout=0x7f030000;
-        public static final int activity_login_layout=0x7f030001;
-        public static final int activity_lunch_main=0x7f030002;
-        public static final int activity_mapclass_layout=0x7f030003;
-        public static final int activity_planning_layout=0x7f030004;
-        public static final int activity_planning_layout2=0x7f030005;
+        public static final int activity_creatgroupe_layout=0x7f030001;
+        public static final int activity_helpeme_layout=0x7f030002;
+        public static final int activity_login_layout=0x7f030003;
+        public static final int activity_lunch_main=0x7f030004;
+        public static final int activity_mapclass_layout=0x7f030005;
+        public static final int activity_planning_layout=0x7f030006;
     }
     public static final class menu {
-        public static final int lunch_main=0x7f080000;
+        public static final int lunch_main=0x7f090000;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -412,11 +422,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a FButton.

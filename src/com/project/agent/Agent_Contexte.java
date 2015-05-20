@@ -5,14 +5,15 @@ package com.project.agent;
  * 
  *  Cette classe se charge de la gestion du contexte
  */
-import com.project.simulaturandroid.Beans;
-
 import jade.core.Agent;
-import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+
+import com.project.metier.Beans;
 
 @SuppressWarnings("serial")
 public class Agent_Contexte extends Agent {
@@ -34,6 +35,7 @@ public class Agent_Contexte extends Agent {
 			}
 		}
 		addBehaviour(new InfoEvents());
+		addBehaviour(new WaitingEventChangeMode());
 
 	}
 
@@ -44,11 +46,10 @@ public class Agent_Contexte extends Agent {
 	 * @author ProBook 450g2
 	 *
 	 */
-	class InfoEvents extends Behaviour {
+	class InfoEvents extends CyclicBehaviour {
 
 		@Override
 		public void action() {
-
 
 			/**
 			 * Attente de message pour l'envoi d'une notification
@@ -63,14 +64,13 @@ public class Agent_Contexte extends Agent {
 				 * Lance l'intent qui envoi la notification (service)
 				 */
 				Intent myIntent = new Intent(Agent_Contexte.this.context,
-						com.project.simulaturandroid.NotifyService.class);
+						com.project.metier.NotifyService.class);
 				/**
 				 * Ajout des msgs de notifications
 				 */
 				myIntent.putExtra("titre", "Bienvenu a l'université");
-				myIntent.putExtra("corp_titre", "Bienvenu "+Beans.getLogin());
-				myIntent.putExtra("corp",
-						"Voici les nouvelles informations :");
+				myIntent.putExtra("corp_titre", "Bienvenu " + Beans.getLogin());
+				myIntent.putExtra("corp", "Voici les nouvelles informations :");
 				Agent_Contexte.this.context.startService(myIntent);
 
 				block();
@@ -81,15 +81,29 @@ public class Agent_Contexte extends Agent {
 
 		}
 
-		@Override
-		public boolean done() {
-			return false;
-		}
-
 	}
 
-	@Override
-	protected void takeDown() {
-		super.takeDown();
+	private class WaitingEventChangeMode extends CyclicBehaviour {
+
+		public void action() {
+			MessageTemplate modele = MessageTemplate.and(
+					MessageTemplate.MatchPerformative(ACLMessage.INFORM),
+					MessageTemplate.MatchConversationId("mode"));
+			jade.lang.acl.ACLMessage reponse = myAgent.receive(modele);
+			if (reponse != null) {
+				String mode = reponse.getContent().toString();
+				if (mode.equals("0")) {
+					AudioManager am = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);   
+					        am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+					          
+				} else {
+					AudioManager am = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);   
+			        am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+				}
+
+			} else
+				block();
+
+		}
 	}
 }

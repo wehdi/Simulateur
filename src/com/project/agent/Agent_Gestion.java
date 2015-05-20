@@ -20,14 +20,15 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.project.simulaturandroid.Beans;
-import com.project.simulaturandroid.Const;
+import com.project.metier.Beans;
+import com.project.metier.Const;
 import com.project.simulaturandroid.NombreGroupeBean;
 
 @SuppressWarnings("serial")
@@ -50,6 +51,8 @@ public class Agent_Gestion extends Agent {
 		addBehaviour(new GroupeRevision(this));
 		addBehaviour(new NotifyABSProf(this));
 		addBehaviour(new UpdatePlanning());
+
+		Beans.setAgentGestion(this);
 	}
 
 	/**
@@ -176,7 +179,7 @@ public class Agent_Gestion extends Agent {
 			jade.lang.acl.ACLMessage message = receive(model);
 			if (message != null) {
 				Intent myIntent = new Intent(Agent_Gestion.this.context,
-						com.project.simulaturandroid.NotifyService.class);
+						com.project.metier.NotifyService.class);
 				/**
 				 * Ajout des msgs de notifications
 				 */
@@ -241,5 +244,106 @@ public class Agent_Gestion extends Agent {
 			return false;
 		}
 
+	}
+
+	/**
+	 * Behaviour qui envoi une notification pour signaler la creation d'un
+	 * groupe
+	 * 
+	 * @author ProBook 450g2
+	 *
+	 */
+	private class CreatGroupeBehaviour extends OneShotBehaviour {
+		private String name;
+		private String jour;
+		private String heur;
+		private String module;
+		private ArrayList<String> infoArray;
+
+		public CreatGroupeBehaviour(String module, String jour, String heur,
+				String name) {
+			super();
+			this.name = name;
+			this.jour = jour;
+			this.heur = heur;
+			this.module = module;
+			infoArray = new ArrayList<String>();
+			infoArray.add(this.name);
+			infoArray.add(this.module);
+			infoArray.add(this.jour);
+			infoArray.add(this.heur);
+		}
+
+		public void action() {
+
+			ACLMessage creationMessage = new ACLMessage(ACLMessage.INFORM);
+			creationMessage.setConversationId("creat");
+			try {
+				creationMessage.setContentObject(infoArray);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			/*
+			 * creationMessage.setContent(this.name + "1" + this.module + "2" +
+			 * this.jour + "3" + this.heur);
+			 */
+			AID dummyAid = new AID();
+			dummyAid.setName("agentScolar@" + Const.ipAdress + ":1099/JADE");
+			dummyAid.addAddresses("http://" + Const.ipAdress + ":7778/acc");
+			creationMessage.addReceiver(dummyAid);
+			send(creationMessage);
+		}
+
+	}
+
+	/**
+	 * methode qui est appelé pour la creation du groupe
+	 */
+	public void creatGroupe(String module, String jour, String heur, String name) {
+		addBehaviour(new CreatGroupeBehaviour(module, jour, heur, name));
+	}
+
+	/**
+	 * Comportement qui envoie une demande d'aide !
+	 */
+	private class HelpMeBehaviour extends OneShotBehaviour {
+		private String message;
+		private String module;
+		private String name;
+		private ArrayList<String> info;
+
+		public HelpMeBehaviour(String message, String module, String name) {
+			super();
+			this.message = message;
+			this.module = module;
+			this.name = name;
+			info = new ArrayList<String>();
+		}
+
+		public void action() {
+			ACLMessage creationMessage = new ACLMessage(ACLMessage.INFORM);
+			creationMessage.setConversationId("helpme");
+			try {
+				info.add(message);
+				info.add(module);
+				info.add(name);
+				creationMessage.setContentObject(info);
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+			AID dummyAid = new AID();
+			dummyAid.setName("agentScolar@" + Const.ipAdress + ":1099/JADE");
+			dummyAid.addAddresses("http://" + Const.ipAdress + ":7778/acc");
+			creationMessage.addReceiver(dummyAid);
+			send(creationMessage);
+
+		}
+
+	}
+	public void sendHelpMe(String message,String module,String name){
+		addBehaviour(new HelpMeBehaviour(message, module, name));
+		
 	}
 }

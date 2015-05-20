@@ -51,8 +51,16 @@
             android:name=".NotifyMessage"
             android:label="TEST" >
         </activity>
+         <activity
+            android:name=".CreatGroupe"
+            android:label="Creation d'un groupe" >
+        </activity>
+            <activity
+            android:name=".HelpMe"
+            android:label="Demander de l'aide" >
+        </activity>
         
-         <service android:enabled="true" android:name=".NotifyService" />
+         <service android:enabled="true" android:name="com.project.metier.NotifyService" />
       
        
     </application>

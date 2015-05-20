@@ -2,6 +2,8 @@ package com.project.simulaturandroid;
 
 import java.util.ArrayList;
 
+import com.project.metier.Beans;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;

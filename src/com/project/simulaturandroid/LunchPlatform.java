@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.project.agent.Agent_Contexte;
 import com.project.agent.Agent_Gestion;
 import com.project.agent.Agent_Interface;
+import com.project.metier.Beans;
 
 public class LunchPlatform extends Activity implements View.OnClickListener {
 	private Button buttonLunch;

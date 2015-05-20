@@ -1,14 +1,11 @@
 package com.project.simulaturandroid;
 
-import jade.core.behaviours.ReceiverBehaviour.Handle;
-import jade.domain.persistence.ThawAgent;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceGroup;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -77,8 +74,17 @@ public class Loged extends Activity implements View.OnClickListener {
 			System.exit(0);
 			break;
 		case R.id.buttonCreate:
-		//	lunchBarDialog(view);
-			//lunchLoading(view);
+			Intent intentCreat = new Intent(Loged.this, CreatGroupe.class);
+			this.startActivity(intentCreat);
+			break;
+		case R.id.buttonHelp:
+			Intent intentHelpMe = new Intent(Loged.this, HelpMe.class);
+			this.startActivity(intentHelpMe);
+			break;
+		case R.id.buttonIHelp :
+			Intent intentIHelp = new Intent(Loged.this, IHelp.class);
+			this.startActivity(intentIHelp);
+			break;
 		default:
 			Log.e("Loged", "Default switch used !!");
 
@@ -101,12 +107,12 @@ public class Loged extends Activity implements View.OnClickListener {
 			public void run() {
 				try {
 					Thread.sleep(1000);
-					
+
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
 				loadpProgressDialog.dismiss();
-				//finish();
+				// finish();
 				Intent intent = new Intent(Loged.this, Planning.class);
 				Loged.this.startActivity(intent);
 
@@ -117,40 +123,29 @@ public class Loged extends Activity implements View.OnClickListener {
 	}
 
 	/*
-	private void lunchBarDialog(View view) {
-		barProgress = new ProgressDialog(this);
-
-		barProgress.setTitle("Telechargement");
-		barProgress.setMessage("mehdi0");
-		barProgress.setProgressStyle(barProgress.STYLE_HORIZONTAL);
-		barProgress.setProgress(0);
-		barProgress.setMax(20);
-		barProgress.show();
-
-		new Thread(new Runnable() {
-
-			public void run() {
-				try {
-					while (barProgress.getProgress() <= barProgress.getMax()) {
-
-						Thread.sleep(2000);
-						updateBarHandler.post(new Runnable() {
-
-							@Override
-							public void run() {
-								barProgress.incrementProgressBy(2);
-							}
-						});
-						
-						if( barProgress.getProgress() == barProgress.getMax())
-							barProgress.dismiss();
-
-					}
-				} catch (Exception e) {
-
-				}
-
-			}
-		}).start();
-	}*/
+	 * private void lunchBarDialog(View view) { barProgress = new
+	 * ProgressDialog(this);
+	 * 
+	 * barProgress.setTitle("Telechargement"); barProgress.setMessage("mehdi0");
+	 * barProgress.setProgressStyle(barProgress.STYLE_HORIZONTAL);
+	 * barProgress.setProgress(0); barProgress.setMax(20); barProgress.show();
+	 * 
+	 * new Thread(new Runnable() {
+	 * 
+	 * public void run() { try { while (barProgress.getProgress() <=
+	 * barProgress.getMax()) {
+	 * 
+	 * Thread.sleep(2000); updateBarHandler.post(new Runnable() {
+	 * 
+	 * @Override public void run() { barProgress.incrementProgressBy(2); } });
+	 * 
+	 * if( barProgress.getProgress() == barProgress.getMax())
+	 * barProgress.dismiss();
+	 * 
+	 * } } catch (Exception e) {
+	 * 
+	 * }
+	 * 
+	 * } }).start(); }
+	 */
 }

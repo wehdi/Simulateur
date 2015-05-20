@@ -10,8 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.project.simulaturandroid.Beans;
-import com.project.simulaturandroid.Const;
+import com.project.metier.Beans;
+import com.project.metier.Const;
 
 public class Agent_Interface extends Agent {
 	/**
@@ -44,7 +44,7 @@ public class Agent_Interface extends Agent {
 			}
 		}
 		comportementSequ.addSubBehaviour(new Lo(this));
-		comportementSequ.addSubBehaviour(new Lo2(this));
+		comportementSequ.addSubBehaviour(new WaitConfiarmationPlanning(this));
 		addBehaviour(comportementSequ);
 	}
 
@@ -99,10 +99,10 @@ public class Agent_Interface extends Agent {
 	 * @author ProBook 450g2
 	 *
 	 */
-	public class Lo2 extends Behaviour {
+	public class WaitConfiarmationPlanning extends Behaviour {
 		private static final long serialVersionUID = 1L;
 
-		public Lo2(Agent a) {
+		public WaitConfiarmationPlanning(Agent a) {
 			super(a);
 		}
 
